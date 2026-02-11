@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini AI Chat</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="chat-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <div class="logo">
+                    <i class="fas fa-robot"></i>
+                    <h2>Suhail AI</h2>
+                </div>
+                <div class="status">
+                    <span class="status-dot" id="status-dot"></span>
+                    <span id="status-text">Connecting...</span>
+                </div>
+            </div>
+            <button class="new-chat-btn" onclick="newChat()">
+                <i class="fas fa-plus"></i> New Chat
+            </button>
+        </div>
+
+        <!-- Messages Container -->
+        <div class="messages" id="messages">
+            <!-- Welcome Message -->
+            <div class="message welcome">
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">
+                    <h3>Hello! I'm Suhail Ahmed 🤖</h3>
+                    <p>I'm powered by Google's Gemini Pro model. I can help you with:</p>
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-code"></i>
+                            <span>Coding help</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-pen"></i>
+                            <span>Writing assistance</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Problem solving</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-question-circle"></i>
+                            <span>Answering questions</span>
+                        </div>
+                    </div>
+                    <p class="tip">Try asking me anything!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Typing Indicator -->
+        <div class="typing-indicator" id="typing-indicator">
+            <div class="typing-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <p>Gemini is typing...</p>
+        </div>
+
+        <!-- Input Area -->
+        <div class="input-area">
+            <div class="input-wrapper">
+                <textarea 
+                    id="user-input" 
+                    placeholder="Ask Gemini anything..." 
+                    rows="1"
+                    onkeydown="handleKeyPress(event)"
+                ></textarea>
+                <div class="input-actions">
+                    <button class="action-btn" onclick="attachFile()" title="Attach">
+                        <i class="fas fa-paperclip"></i>
+                    </button>
+                    <button class="action-btn" onclick="voiceInput()" title="Voice">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                </div>
+            </div>
+            <button class="send-btn" id="send-btn" onclick="sendMessage()">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+
+        <!-- Quick Suggestions -->
+        <div class="suggestions">
+            <button class="suggestion" onclick="quickQuestion('Explain artificial intelligence in simple terms')">
+                🤖 Explain AI
+            </button>
+            <button class="suggestion" onclick="quickQuestion('Write a Python function to calculate factorial')">
+                🐍 Python Code
+            </button>
+            <button class="suggestion" onclick="quickQuestion('Tell me a fun fact about space')">
+                🚀 Space Fact
+            </button>
+            <button class="suggestion" onclick="quickQuestion('How to improve productivity?')">
+                ⚡ Productivity
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
